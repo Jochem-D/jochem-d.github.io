@@ -1,13 +1,15 @@
 main {
     color:black;
 }
+
 nav {
-    font-family: Arial, Helvetica, sans-serif;
-}
-nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
     background-color: rgb(3, 16, 75);
     overflow: hidden;
-}
+    font-family: Arial, Helvetica, sans-serif;
+  }
 nav a {
     float: left;
     color: #f2f2f2;
