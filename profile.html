@@ -1,55 +1,91 @@
-<DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-  <head>
-    <link rel="stylesheet" href="profile.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile</title>
-  </head>
+<head>
+  <link rel="stylesheet" href="profile.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Index</title>
+  <script src="profile.js"></script>
+</head>
 
-  <nav>
-    <li><a href="index.html"> Home</a></li>
-    <li><a href="profile.html">Profile</a></li>
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="faq.html"> FAQ</a></li>
-    <li><a href="blog.html"> Blog</a></li>
-    <li><a href="blogposts.html"> Posts</a></li>
-  </nav>
 
-  <main>
+
+<body>
+  <div id="mySidebar" class="sidebar">
+    <li><a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a></li>
+    <li><a href="https://hz.nl/over-de-hz/regelingen-documenten-1/onderwijs-en-examenregelingen"
+          target="_blank">Onderwijs en Examen regelingen</a></li>
+    <li><a href="https://hz.nl/uploads/documents/Regelingen/OERS/2020-2021/7.-Uitvoeringsregeling-OER-Chemie-Voltijd-2020-2021.pdf"
+          target="_blank">Uitvoeringsregeling HZ</a></li>
+    <li><a href="https://learn.hz.nl/" target="_blank">Learn omgeving HZ</a></li>
+    <li><a href="https://teams.microsoft.com/l/channel/19%3a827654897ab746089c081f24aff1c984%40thread.skype/General?groupId=337e8cca-f67d-4132-9fa9-b0c761bbeb94&tenantId=4c16deb3-342d-4fca-bcd5-b1429308034c"
+          target="_blank">Teams omgeving HZ</a></li>
+          <li><a href="https://apps.hz.nl/angular/studievoortgang/studiestatus"
+             target="_blank">Studievoortgang</a></li>
+          <li><a href="https://github.com/HZ-HBO-ICT"
+             target="_blank">Github omgeving</a></li>
+ </div>
+
+
+
+
+  <div class="navigatie" id="main">
+
+    <nav>
+      <li><a><span style="cursor:pointer" onclick="toggleNav()">≡</span></a></li>
+      <li><a href="index.html"> Home</a></li>
+      <li><a class="active" href="profile.html">Profile</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="faq.html"> FAQ</a></li>
+      <li><a href="blog.html"> Blog</a></li>
+      <li><a href="blogposts.html"> Posts</a></li>
+    </nav>
+
+
+
     <article>
+      <img src="jochem.jpeg" alt="foto-jochem"> 
+     
+     
+      <h1>Persoonlijke gegevens</h1>
+     
+     
+     <div class="lijst">
+        <ul>
+          <li>Naam: Jochem Dijkdrent</li>
+          <li>Leeftijd: 17 jaar</li>
+          <li>Woonplaats: Kloetinge</li>
+          <li>Vooropleiding en profiel: Mijn vooropleiding was Havo met het profiel natuur en techniek</li>
+        </ul>
+      </div>
 
-      <h3>Naam:</h3>
-      <p>Jochem Dijkdrent</p>
-      <h3>Leeftijd:</h3> 
-      <p>17 jaar</p>
-      <h3>Woonplaats:</h3>
-      <p>Binnenhof 3</p>
-      <h3>Vooropleiding en Profiel:</h3>
-      <p>Mijn vooropleiding was Havo op Het Goese lyceum met het profiel natuur en techniek</p>
-      <p>Ik werk part-time in de vakanties bij ZES goes.
-        En in mijn vrije tijd korfbal ik bij Togo en speel ik games met mijn vrienden.
-        Ik denk dat dit wel goed te combineren valt met studeren,
-        want in de vakanties werken zou geen probleem moeten zijn,
-        en korfbal kan ik denk ik ook nogsteeds blijven doen,
-        want ik kan gewoon met de trein rijzen.
-        En gamen zou mischien iets minder moeten,
-        maar ik denk dat dat wel lukt.
-       
 
-      </p>
+      <div class="lijst">
+        <h1>Vrije tijd</h1>
+        <ul>
+          <li>Ik speel korfbal bij Togo</li>
+          <li>Ik speel games met vrienden</li>
+          <li>Ik werk part-time bij ZES goes</li>
+          <li>Ik heb een tweelingzus genaamd Rowi</li>
+        </ul>
+        </div>  
 
+   <div class= "karakterlist">
+     <h1>Karakteristieken</h1>
+        <ol>
+          <li>Onzeker</li>
+          <li>Snel afgeleid</li>
+          <li>Optimistisch</li>
+          <li>Sociaal</li>
+        </ol>
+        </div>
     </article>
-  </main>
 
 
 
-
-
-
-
-
-
-  </html>
+  </div>
+</body>
+  
+</html>

@@ -12,20 +12,138 @@ nav {
   }
 nav a {
     float: left;
-    color: #f2f2f2;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
   }
   nav a:hover {
-    background-color: #ddd;
+    background-color: rgb(255, 255, 255);
     color: black;
   }
   nav a.active {
     background-color: #04AA6D;
     color: white;
   }
-  li{
+  .navigatie li{
     list-style-type: none;
   }
+
+  .lijst ul li {
+    list-style:initial;
+  }
+  
+  .karakterlist ol li {
+    list-style:decimal;
+  }
+
+  img { 
+    width: 150px;
+    float: right;
+    margin-right: 20px;
+  }
+ .FAQ{
+font-family: Arial, Helvetica, sans-serif;
+text-align: center;
+
+}
+  #main ul {
+    list-style-type:initial;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    
+  }
+
+  #main .navbar a {
+    display: block;
+    color: #000;
+    padding: 8px 15px;
+    text-decoration: none;
+  }
+
+ #main li a.active {
+    background-color: #02bdca;
+    color: white;
+  }
+  
+ #main li a:hover:not(.active) {
+    background-color: rgb(31, 2, 133);
+    color: white;
+  }
+
+  .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(3, 16, 75);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  
+    
+  }
+  
+.sidebar li {
+  list-style: none;
+}
+
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    font-family:Arial, Helvetica, sans-serifF
+    
+  }
+  
+  .sidebar a:hover {
+    color: #ffffff;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    
+  }
+  
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(3, 16, 75);
+    color: white;
+    padding: 10px 10px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 0px;
+  }
+
+  #main nav li span {
+    color:white;
+    height: 10px;
+    margin: 5px;
+  }
+  article {
+    font-family:Arial, Helvetica, sans-serif
+  }
+
+
+
+
+
