@@ -26,7 +26,7 @@ nav a.active {
     color: white;
   }
 
-.navigatie li{
+.navigatie ul li{
     list-style-type: none;
   }
 
