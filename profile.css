@@ -1,7 +1,3 @@
-main {
-    color:black;
-}
-
 nav {
     position: sticky;
     top: 0;
@@ -10,6 +6,7 @@ nav {
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
   }
+
 nav a {
     float: left;
     color: #ffffff;
@@ -18,62 +15,72 @@ nav a {
     text-decoration: none;
     font-size: 17px;
   }
-  nav a:hover {
+
+nav a:hover {
     background-color: rgb(255, 255, 255);
     color: black;
   }
-  nav a.active {
+
+nav a.active {
     background-color: #04AA6D;
     color: white;
   }
-  .navigatie li{
+
+.navigatie li{
     list-style-type: none;
   }
 
-  .lijst ul li {
-    list-style:initial;
-  }
+.info ul li {
+  list-style-type: initial;
+}
   
-  .karakterlist ol li {
+.karakterlist ol li {
     list-style:decimal;
   }
 
-  img { 
+img { 
     width: 150px;
     float: right;
     margin-right: 20px;
   }
- .FAQ{
+
+iframe {
+    float: right;
+    margin-right: -150px;
+    margin-top: 300px; 
+  }
+
+.FAQ{
 font-family: Arial, Helvetica, sans-serif;
 text-align: center;
 
 }
-  #main ul {
+
+#main ul {
     list-style-type:initial;
     margin: 0;
     padding: 0;
     width: 200px;
-    
   }
 
-  #main .navbar a {
+#main .navbar a {
     display: block;
     color: #000;
     padding: 8px 15px;
     text-decoration: none;
   }
 
- #main li a.active {
+#main li a.active {
     background-color: #02bdca;
     color: white;
   }
   
- #main li a:hover:not(.active) {
+#main li a:hover:not(.active) {
     background-color: rgb(31, 2, 133);
     color: white;
   }
 
-  .sidebar {
+.sidebar {
     height: 100%;
     width: 0;
     position: fixed;
@@ -84,15 +91,13 @@ text-align: center;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  
-    
   }
   
 .sidebar li {
-  list-style: none;
-}
+  list-style: none;   
+  }
 
-  .sidebar a {
+.sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -103,11 +108,11 @@ text-align: center;
     
   }
   
-  .sidebar a:hover {
+.sidebar a:hover {
     color: #ffffff;
   }
   
-  .sidebar .closebtn {
+.sidebar .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -116,7 +121,7 @@ text-align: center;
     
   }
   
-  .openbtn {
+.openbtn {
     font-size: 20px;
     cursor: pointer;
     background-color: rgb(3, 16, 75);
@@ -125,21 +130,21 @@ text-align: center;
     border: none;
   }
   
-  .openbtn:hover {
+.openbtn:hover {
     background-color: #444;
   }
   
-  #main {
+#main {
     transition: margin-left .5s;
     padding: 0px;
   }
 
-  #main nav li span {
+#main nav li span {
     color:white;
     height: 10px;
     margin: 5px;
   }
-  article {
+article {
     font-family:Arial, Helvetica, sans-serif
   }
 
