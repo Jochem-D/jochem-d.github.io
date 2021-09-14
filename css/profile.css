@@ -1,0 +1,26 @@
+.info ul li {
+  list-style-type: initial;
+}
+.char-list ol li {
+    list-style:decimal;
+}
+img { 
+    width: 150px;
+    float: right;
+    margin-right: 20px;
+}
+
+iframe {
+    float: right;
+    margin-right: -150px;
+    margin-top: 300px; 
+}
+
+article {
+    font-family:Arial, Helvetica, sans-serif;
+  }
+ 
+
+
+
+
