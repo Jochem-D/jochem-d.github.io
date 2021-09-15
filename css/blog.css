@@ -7,7 +7,21 @@ h1{
 p {
     margin-left: 15px;
     line-height: 3px;
+    font-size: 17px;
 }
 h3{
     margin-left: 15px;
 }
+
+.footer{
+    position:sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightseagreen;
+    color: white;
+    text-align: center;
+ }
+  .hzlogo{
+    width: 70px;
+  }
