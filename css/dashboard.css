@@ -101,3 +101,12 @@
     background-color: #303686;
   
   }
+  table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+  h2{
+    text-align: center;
+  }

@@ -1,22 +1,23 @@
-nav {
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navigation {
     position: relative;
-    width: 100%;
     background-color: rgb(3, 16, 75);
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
     
   }
   
-  nav a {
+  .navigation a {
     float: left;
     color: #ffffff;
     text-align: center;
-    margin: 0px;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-    display: block;
-
   }
   
   nav a:hover {
@@ -24,14 +25,11 @@ nav {
     color: rgb(255, 255, 255);
   }
   
-  nav a.active {
+  .navigation a.active {
     background-color: #02bdca;
     color: rgb(255, 255, 255);
   }
   
-  .navigation nav li{
-    list-style-type: none;
-  }
   li {
     border-right: 1px solid #bbb;
   }

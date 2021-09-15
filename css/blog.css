@@ -1,3 +1,13 @@
 article{
     font-family: Arial, Helvetica, sans-serif;
 }
+h1{
+    margin-left: 15px;
+}
+p {
+    margin-left: 15px;
+    line-height: 3px;
+}
+h3{
+    margin-left: 15px;
+}
