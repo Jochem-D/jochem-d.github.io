@@ -21,8 +21,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
   }
   
-nav a:hover {
-    background-color: rgb(31, 2, 133);
+nav a li:hover {
+    background-color: rgb(86, 142, 226);
     color: rgb(255, 255, 255);
   }
   
@@ -35,5 +35,11 @@ nav a:hover {
     border-right: 1px solid #bbb;
   }
 
+ body{
+ background: linear-gradient(90deg,#003973  ,#E5E5BE);
+ color: white;
+ }
 
-  
+a{
+  color:aqua;
+}
