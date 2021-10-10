@@ -2,26 +2,27 @@
   list-style-type: initial;
 }
 .char-list ol li {
-    list-style:decimal;
+  list-style:decimal;
 }
-.fotoj { 
-    width: 150px;
-    float: right;
-    margin-right: 20px;
+
+.togoa2 {
+  width: 450px;
+  float: right;
+  margin-right: 20px;
 }
 
 iframe {
-    float: right;
-    margin-right: -150px;
-    margin-top: 300px; 
+  float: right;
+  margin-right: -450px;
+  margin-top: 300px; 
 }
 
 article {
-    font-family:Arial, Helvetica, sans-serif;
-  }
+  font-family:Arial, Helvetica, sans-serif;
+}
  
-  h1{
-    margin-left: 15px;
+h1{
+  margin-left: 15px;
 }
 
 
