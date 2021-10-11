@@ -20,5 +20,16 @@ p {
 .picsite{
     width: 600px;
     float: right;
-    margin-right: 20px;
+    margin-right: 0px;
+}
+.footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightseagreen;
+    text-align: center;
+}
+.hzlogo{
+    width: 50px;
 }

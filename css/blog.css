@@ -12,16 +12,14 @@ p {
 h3{
     margin-left: 15px;
 }
-
 .footer{
-    position:sticky;
+    position: absolute;
     left: 0;
-    bottom: 0;
     width: 100%;
     background-color: lightseagreen;
-    color: white;
     text-align: center;
-}
-.hzlogo{
-    width: 70px;
-}
+    margin-bottom: -600px;
+  }
+  .hzlogo{
+    width: 50px;
+  }
