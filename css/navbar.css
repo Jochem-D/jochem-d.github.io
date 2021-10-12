@@ -21,14 +21,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
   
-nav a li:hover {
-  background-color: rgb(86, 142, 226);
-  color: rgb(255, 255, 255);
+.navigation a:hover {
+  background-color: rgb(12, 52, 112);
+
 }
   
 .navigation a.active {
   background-color: #02bdca;
-  color: rgb(255, 255, 255);
 }
   
 .navigation a {
