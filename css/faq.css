@@ -11,9 +11,11 @@ summary{
     margin-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    font-size: 15px;
 }
 p{
     line-height: 2px;
+    
 }
 .footer{
     position: absolute;
