@@ -1,0 +1,175 @@
+footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(4, 77, 26);
+    text-align: center;
+  }
+  .hzlogo{
+    width: 50px;
+  }
+  .lmao{
+      width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      margin-top: 30px;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .navigation {
+    position: relative;
+    background-color: rgb(117, 24, 24);
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+      
+  }
+    
+  .navigation a {
+    color: #32ad0d;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+    
+  .navigation a:hover {
+    background-color: rgb(255, 81, 0);
+  
+  }
+    
+  .navigation a.active {
+    background-color: #8d0707;
+  }
+    
+  .navigation a {
+    border-right: 1px solid rgb(0, 0, 0);
+  }
+  
+  body {
+      background: linear-gradient(-45deg, #5eff00, #ff0000);
+      background-size: 400% 400%;
+      animation: gradient 2s ease infinite;
+      height: 100vh;
+      color: rgb(0, 0, 0);
+    }
+    
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  
+  
+  a{
+    color:rgb(0, 0, 0);
+    text-decoration: none;
+  }
+  h1{
+    margin-left: 15px;
+  }
+  p{
+    margin-left: 15px;
+  }
+
+  @media only screen and (max-width: 345) {
+    footer{
+      position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: -600px;
+        background-color: rgb(4, 77, 26);
+    }
+    .hzlogo{
+      width: 50px;
+    }
+    .lmao{
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 30px;
+    }
+  
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    .navigation {
+      position: relative;
+      background-color: rgb(117, 24, 24);
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+        
+    }
+      
+    .navigation a {
+      color: #32ad0d;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 20px;
+      float: left;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+      
+    .navigation a:hover {
+      background-color: rgb(255, 81, 0);
+    
+    }
+      
+    .navigation a.active {
+      background-color: #8d0707;
+    }
+      
+    .navigation a {
+      border-right: 1px solid rgb(0, 0, 0);
+    }
+    
+    body {
+        background: linear-gradient(-45deg, #5eff00, #ff0000);
+        background-size: 400% 400%;
+        animation: gradient 2s ease infinite;
+        height: 100vh;
+        color: rgb(0, 0, 0);
+      }
+      
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    
+    
+    a{
+      color:rgb(0, 0, 0);
+      text-decoration: none;
+    }
+    h1{
+      margin-left: 15px;
+    }
+    p{
+      margin-left: 15px;
+    }
+  }
