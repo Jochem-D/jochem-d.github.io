@@ -1,35 +1,32 @@
-.motivation{
+body {
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-}
-h1{
-    margin-left: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
-}
-p {
-    margin-left: 15px;
-    line-height: 3px;
-    font-size: 15px;
-}
-.picpc{
-    width: 200px;
-    float: right;
-    margin-right: -600px;
-    margin-top: 300px;
-}
-.picsite{
-    width: 600px;
-    float: right;
-    margin-right: 0px;
-}
-.footer{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: lightseagreen;
+    background-image: url("/resources/shangrilafrontier.png");
+    background-position: 1px;
+  }
+
+ 
+
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #9c9c9c;
     text-align: center;
-}
-.hzlogo{
-    width: 50px;
-}
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    text-decoration: #c0c0c0;
+    color: rgb(211, 211, 211);
+  }
+  
+  .topnav a.active {
+    background-color: #636363;
+    color: white;
+  }
