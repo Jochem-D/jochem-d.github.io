@@ -84,3 +84,11 @@ function openWinBox(url, title, width = 800, height = 550) {
 }
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".close-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation(); // so click doesn’t open anything
+      btn.closest(".icon").style.display = "none";
+    });
+  });
+});
