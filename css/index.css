@@ -1,15 +1,13 @@
 /* ===== Retro Portfolio CSS (Windows 95 style, scaled up) ===== */
 
 body {
-  background-color: teal; /* Classic Win95 teal */
-  background-size: 128px 128px;
+  background-color: teal;
   padding: 2rem;
   font-family: 'MS Sans Serif', sans-serif;
   margin: 0;
-  font-size: 16px; /* default text bigger */
+  font-size: 16px;
   line-height: 1.5;
 }
-
 /* ===== Taskbar ===== */
 .taskbar {
   position: fixed;
