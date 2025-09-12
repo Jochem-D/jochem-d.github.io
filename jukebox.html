@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retro Jukebox</title>
+  <link rel="stylesheet" href="./css/jukebox.css">
+</head>
+<body>
+  <header>Favourite Music</header>
+  <div class="jukebox">
+    <div class="album-grid" id="albumGrid"></div>
+    <div class="turntable">
+      <div class="arm" id="arm"></div>
+      <div class="vinyl-on-deck" id="vinyl"></div>
+    </div>
+    <div class="info-panel">
+      <h2 id="infoTitle"></h2>
+      <p id="infoDesc"></p>
+      <a id="infoLink" href="#" target="_blank">Listen</a>
+    </div>
+  </div>
+
+  <div id="ytPreviewContainer"></div>
+  <audio id="easterEggAudio" src="./resources/bwomp.mp3"></audio>
+  <script src="/js/achievements.js"></script>
+  <script>
+    const records = [
+  {
+    title: "Tank! — The Seatbelts",
+    description: "Intro from Cowboy Bebop. Jazzy, energetic, iconic.",
+    cover: "https://i.scdn.co/image/ab67616d0000b273e90a54d6e31d9ff3f1d566fa",
+    link: "https://youtu.be/UFFa0QoHWvE",
+    videoId: "UFFa0QoHWvE"
+  },
+  {
+    title: "Unravel — TK from Ling Tosite Sigure",
+    description: "Opening of Tokyo Ghoul. A modern classic.",
+    cover: "https://upload.wikimedia.org/wikipedia/en/thumb/0/0a/Unravel_album_cover.jpg/250px-Unravel_album_cover.jpg",
+    link: "https://www.youtube.com/watch?v=7aMOurgDB-o",
+    videoId: "7aMOurgDB-o"
+  },
+  {
+    title: "Fireflies — Owl City",
+    description: "Dreamy synth-pop anthem from the late 2000s.",
+    cover: "https://i.ytimg.com/vi/2BXRpq3MEGY/hq720.jpg",
+    link: "https://www.youtube.com/watch?v=psuRGfAaju4",
+    videoId: "psuRGfAaju4"
+  },
+  {
+    title: "Gurenge — LiSA",
+    description: "Opening of Demon Slayer. Powerful rock anthem.",
+    cover: "https://static.qobuz.com/images/covers/ib/mt/xylmlhuo4mtib_600.jpg",
+    link: "https://www.youtube.com/watch?v=CwkzK-F0Y00",
+    videoId: "CwkzK-F0Y00"
+  },
+  {
+    title: "Mumei — Mumei",
+    description: "Atmospheric and haunting track by Mumei.",
+    cover: "https://images.genius.com/8a088563fbc0b5fcf4d217de92ee8f6e.1000x1000x1.png",
+    link: "https://www.youtube.com/watch?v=oA0CpI0vCK4",
+    videoId: "oA0CpI0vCK4"
+  },
+  {
+    title: "Shelter — Porter Robinson & Madeon",
+    description: "Emotional electronic masterpiece.",
+    cover: "https://upload.wikimedia.org/wikipedia/en/a/af/ShelterPorterRobinson%26Madeon.jpeg",
+    link: "https://www.youtube.com/watch?v=fzQ6gRAEoy0",
+    videoId: "fzQ6gRAEoy0"
+  },
+  {
+    title: "Blue Bird — Ikimono Gakari",
+    description: "Iconic Naruto Shippuden opening.",
+    cover: "https://i1.sndcdn.com/artworks-aZ3OzwpchP9KfRnV-P8BkAA-t500x500.jpg",
+    link: "https://www.youtube.com/watch?v=6lWq6o3Z92I",
+    videoId: "6lWq6o3Z92I"
+  }
+];
+
+
+    let currentIndex = 0;
+    let currentTimeouts = [];
+    let clickCount = 0;
+    const vinyl = document.getElementById('vinyl');
+    const albumGrid = document.getElementById('albumGrid');
+    const audio = document.getElementById('easterEggAudio');
+
+    records.forEach((record, index) => {
+      const div = document.createElement('div');
+      div.className = 'album';
+      div.style.top = `${index * 40}px`;
+      div.style.backgroundImage = `url('${record.cover}')`;
+      albumGrid.appendChild(div);
+    });
+
+    function resetAnimation() {
+  currentTimeouts.forEach(clearTimeout);
+  currentTimeouts = [];
+
+  const arm = document.getElementById('arm');
+  arm.style.transition = 'none';
+  arm.style.transform = 'rotate(0deg)';
+
+  vinyl.style.display = 'none';
+  vinyl.style.backgroundImage = 'none';
+  vinyl.style.animation = 'none'; // STOP SPIN
+
+  // force reflow to reset transition
+  void arm.offsetWidth;
+  arm.style.transition = 'transform 1.5s cubic-bezier(0.23, 1, 0.32, 1)';
+
+  document.getElementById('ytPreviewContainer').innerHTML = '';
+}
+
+
+    function updateSelection() {
+  document.querySelectorAll('.album').forEach((el, i) => {
+    el.classList.toggle('selected', i === currentIndex);
+  });
+
+  const info = records[currentIndex];
+  document.getElementById('infoTitle').textContent = info.title;
+  document.getElementById('infoDesc').textContent = info.description;
+  document.getElementById('infoLink').href = info.link;
+
+  resetAnimation();
+
+  // Show vinyl immediately (not spinning yet)
+  vinyl.style.display = 'block';
+  vinyl.style.backgroundImage = `url('${info.cover}')`;
+
+  // Move the arm & play preview
+  currentTimeouts.push(setTimeout(() => {
+    document.getElementById('arm').style.transform = 'rotate(45deg)';
+
+    const ytContainer = document.getElementById('ytPreviewContainer');
+    ytContainer.innerHTML = `
+      <iframe
+        width="0"
+        height="0"
+        src="https://www.youtube.com/embed/${info.videoId}?autoplay=1&mute=1&start=0&controls=0"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    `;
+  }, 150));
+
+  // Start spinning AFTER the arm animation finishes (after 1.5s)
+  currentTimeouts.push(setTimeout(() => {
+    vinyl.style.animation = 'spin 5s linear infinite';
+  }, 1800));
+
+  // Stop video preview after 5 seconds
+  currentTimeouts.push(setTimeout(() => {
+    document.getElementById('ytPreviewContainer').innerHTML = '';
+  }, 5000));
+}
+
+
+
+    function moveSelection(delta) {
+      currentIndex = (currentIndex + delta + records.length) % records.length;
+      updateSelection();
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') moveSelection(1);
+      else if (e.key === 'ArrowUp') moveSelection(-1);
+    });
+
+    window.addEventListener('wheel', (e) => {
+      if (e.deltaY > 0) moveSelection(1);
+      else moveSelection(-1);
+    });
+
+    // Easter egg click: 3 clicks = play
+    vinyl.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount >= 3) {
+        audio.play("");
+        clickCount = 0;
+      }
+      setTimeout(() => clickCount = 0, 2000); // reset counter after 2s
+    });
+
+    updateSelection(); // initial load
+  </script>
+</body>
+</html>

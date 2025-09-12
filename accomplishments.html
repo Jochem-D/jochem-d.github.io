@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="/js/achievements.js"></script>
+  <style>
+    body {
+      background: #1b1d20;
+      color: #ddd;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .achievement-list {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .achievement {
+      background: #2a2d32;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-left: 4px solid #4caf50;
+    }
+
+    .achievement.locked {
+      opacity: 0.5;
+      border-left-color: #777;
+    }
+
+    .achievement:hover {
+      background: #32353a;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title-row h2 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .title-row .status {
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    .description {
+      display: none;
+      margin-top: 10px;
+      color: #bbb;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .achievement.expanded .description {
+      display: block;
+    }
+
+    .achievement.locked .status::before {
+      content: "🔒 Locked";
+    }
+
+    .achievement:not(.locked) .status::before {
+      content: "✅ Unlocked";
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 My Achievements</h1>
+
+  <div class="achievement-list">
+
+    <div class="achievement" onclick="toggle(this)">
+      <div class="title-row">
+        <h2>Hello, World!</h2>
+        <div class="status"></div>
+      </div>
+      <div class="description">
+        Your first successful output to the console. It may be small, but it's the start of something great.
+      </div>
+    </div>
+
+    <div class="achievement" onclick="toggle(this)">
+      <div class="title-row">
+        <h2>Git Committed</h2>
+        <div class="status"></div>
+      </div>
+      <div class="description">
+        Pushed your first commit to a remote Git repository. You're now officially part of the version control club.
+      </div>
+    </div>
+
+    <div class="achievement locked" onclick="toggle(this)">
+      <div class="title-row">
+        <h2>Deployment Complete</h2>
+        <div class="status"></div>
+      </div>
+      <div class="description">
+        Deployed your application to a live server. The world can now see your work.
+      </div>
+    </div>
+
+    <div class="achievement locked" onclick="toggle(this)">
+      <div class="title-row">
+        <h2>AI Integrator</h2>
+        <div class="status"></div>
+      </div>
+      <div class="description">
+        Used a machine learning or AI API in one of your apps. Welcome to the future.
+      </div>
+    </div>
+
+    <div class="achievement" onclick="toggle(this)">
+      <div class="title-row">
+        <h2>Bug Squisher</h2>
+        <div class="status"></div>
+      </div>
+      <div class="description">
+        Debugged and fixed an issue that wasn't obvious. You stared into the abyss and made it blink.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggle(el) {
+      el.classList.toggle('expanded');
+    }
+  </script>
+
+</body>
+</html>
