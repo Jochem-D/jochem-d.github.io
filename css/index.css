@@ -2,7 +2,6 @@
 
 body {
   background-color: teal; /* Classic Win95 teal */
-  background-image: url("https://i.imgur.com/0jKj4X3.png"); /* Subtle noise texture */
   background-size: 128px 128px;
   padding: 2rem;
   font-family: 'MS Sans Serif', sans-serif;
