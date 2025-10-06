@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jochem Dijkdrent — Home</title>
+    <meta name="description" content="Description of myself" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Nav -->
+    <header class="nav">
+      <div class="container nav__inner">
+        <div class="brand">Jokemu</div>
+        <nav class="nav__links" id="nav-links">
+          <a href="#home" class="nav__link active">Home</a>
+          <a href="#about" class="nav__link">About</a>
+          <a href="#projects" class="nav__link">Projects</a>
+          <a href="#listening" class="nav__link">Music</a>
+          <a href="#extra" class="nav__link">Goals</a>
+        </nav>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu"
+          aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+    <main>
+
+      <!-- Hero / Home -->
+      <section id="home" class="section hero">
+        <div class="container hero__content">
+          <h1>Hey, I’m <span class="gradient">Jochem</span> — an HBO-ICT student
+            from HZ who's in his fourth year.</h1>
+          <p class="muted">I like to watch anime and read manga. I also love
+            music and building with LEGO. Scroll down to see what I enjoy
+            doing.</p>
+          <div class="btnrow">
+            <a class="btn" href="#projects">See Projects</a>
+            <a class="btn btn--secondary" href="#about">About Me</a>
+          </div>
+        </div>
+
+        <!-- Side images (desktop) -->
+        <div class="side-gallery side-gallery--left">
+          <img src="resources/shot-1.jpg" alt />
+          <img src="resources/Teamfotocut.jpg" alt />
+          <img src="resources/shot-3.jpg" alt />
+        </div>
+        <div class="side-gallery side-gallery--right">
+          <img src="resources/" alt />
+          <img src="resources/" alt />
+          <img src="resources/vogelbekdiersite.jpeg" alt />
+        </div>
+
+        <!-- Mobile carousel -->
+        <div class="carousel" aria-label="photo strip">
+          <img src="resources/" alt />
+          <img src="resources/" alt />
+          <img src="resources/" alt />
+          <img src="resources/" alt />
+          <img src="resources/" alt />
+          <img src="resources/" alt />
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section">
+        <div class="container grid-2">
+          <div>
+            <h2>About Me</h2>
+            <p class="muted">I’m a computer science engineer focused on backend
+              development. in my free time, I like to watch anime, play video
+              games, and build with LEGO. I also play korfbal at KVTOGO.
+              I enjoy trying new stuff, but im not good at starting new stuff :)
+              Right now i'm learning the guitar and learning how to 3D
+              model.</p>
+            <div class="tags">
+              <span class="tag">Go</span>
+              <span class="tag">Javascript</span>
+              <span class="tag">Laravel</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Unreal Engine</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Favorites</h3>
+            <ul class="list">
+              <li><strong>Anime:</strong> City The Animation, One Piece, Dr.
+                Stone and Konosuba.</li>
+              <li><strong>Games:</strong> Minecraft, most indie games and VR
+                games also.</li>
+              <li><strong>LEGO:</strong> Nintendo, movie references, all that
+                nerdy type shit.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section__header">
+            <h2>Projects</h2>
+            <a class="btn btn--ghost" href="https://github.com/jochem-d"
+              target="_blank" rel="noreferrer">View GitHub</a>
+          </div>
+          <div class="cards">
+            <a class="card card--link" rel="noreferrer">
+              <h3>DD sheet creator for school (D&D 5e Manager)</h3>
+              <p class="muted">Go-based CLI + static web sheet. Commands for
+                inventory, spells, and equipment management.</p>
+              <div class="tags"><span class="tag">Go</span><span
+                  class="tag">CLI</span><span class="tag">Web</span></div>
+            </a>
+            <a class="card card--link" href="#" target="_blank"
+              rel="noreferrer">
+              <h3>Portfolio site</h3>
+              <p class="muted">I always refactor this site, because I am truly
+                never happy with how it looks.</p>
+              <div class="tags"><span class="tag">HTML</span><span
+                  class="tag">CSS</span><span
+                  class="tag">Javascript</span></div>
+            </a>
+            <a class="card card--link"
+              rel="noreferrer">
+              <h3>Unreal Engine Dashboard</h3>
+              <p class="muted">An interactive system made for the JRCZ that
+                connects with sensors in the building to give an overview of the
+                environment in real time.</p>
+              <div class="tags"><span class="tag">Unreal</span><span
+                  class="tag">Blueprints</span></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Listening -->
+      <section id="listening" class="section">
+        <div class="container">
+          <h2>What I’m Listening To</h2>
+
+          <div class="embed">
+            <iframe
+              title="Spotify"
+              src="https://open.spotify.com/embed/playlist/7FbR7JLc2rb2e6b5iuDYYn?utm_source=generator"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              style="height: 500px; width: 100%; border: none; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+            </iframe>
+
+            <details class="details">
+              <summary>As you can see its mostly music from the 70s to the 90s
+                but i also listen to a lot more!</summary>
+              <p> <code>J-pop, K-op, Jazz, Rock, Pop and whatever I gt sent by my friends!
+            </details>
+          </div>
+        </section>
+
+        <!-- Fun / Goals -->
+        <section id="extra" class="section">
+          <div class="container grid-2">
+            <div class="card">
+              <h3>Goals I want to achieve</h3>
+              <ul class="list">
+                <li>• Make a game in Unreal Engine and ship it.</li>
+                <li>• Build a raytacing engine</li>
+                <li>• Build enough lego sets so that my house is full of
+                  them</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Just for Fun</h3>
+              <ul class="list">
+                <li>• I'm busy learning the guitar</li>
+                <li>• Collecting vinyl records</li>
+                <li>• Seeing if I can still code without chatgpt</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footer__inner">
+          <p>© <span id="year"></span> Jochem Dijkdrent</p>
+          <div class="socials">
+            <a href="https://github.com/jochem-d" target="_blank"
+              rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/jochem-dijkdrent-377b491a0"
+              target="_blank"
+              rel="noreferrer">LinkedIn</a>
+            <a href="mailto:jochem.dijkdrent@gmail.com">Email</a>
+          </div>
+        </div>
+      </footer>
+
+      <script defer src="assets/js/main.js"></script>
+    </body>
+  </html>
