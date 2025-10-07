@@ -221,90 +221,46 @@ document.getElementById('year').textContent = new Date().getFullYear();
   }
 })();
 
-
-// ------- Mobile hero carousel: auto-advance on phones -------
 (() => {
-  const scroller = document.querySelector('.hero__images');
-  if (!scroller) return;
+  const carousel = document.querySelector('.hero__images');
+  if (!carousel) return;
 
-  const mq = window.matchMedia('(max-width: 880px)');
+  let index = 0;
+  const slides = carousel.querySelectorAll('.pop');
+  if (slides.length <= 1) return;
 
-  let timer = null;
-  let idx = 0;
-  let paused = false;
-  let userInteracting = false;
-  let resumeTO = null;
-
-  const INTERVAL_MS = 3500;   // time between slides
-  const RESUME_AFTER = 2500;  // resume this long after user interaction
-
-  function getCards() {
-    return Array.from(scroller.querySelectorAll('.pop'));
-  }
-
-  function currentIndex(cards) {
-    // find the most visible card in viewport
-    const scRect = scroller.getBoundingClientRect();
-    let best = 0, bestOverlap = -Infinity;
-    cards.forEach((c, i) => {
-      const r = c.getBoundingClientRect();
-      const overlap = Math.min(scRect.right, r.right) - Math.max(scRect.left, r.left);
-      if (overlap > bestOverlap) { bestOverlap = overlap; best = i; }
+  const scrollCarousel = () => {
+    index = (index + 1) % slides.length;
+    // smooth horizontal scroll INSIDE the element
+    carousel.scrollTo({
+      left: slides[index].offsetLeft,
+      behavior: 'smooth'
     });
-    return best;
-  }
+  };
 
-  function scrollToIndex(cards, i) {
-    if (!cards.length) return;
-    cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-  }
+  let timer;
 
-  function tick() {
-    if (paused || userInteracting || document.hidden || !mq.matches) return;
-    const cards = getCards();
-    if (cards.length < 2) return;
-    idx = (idx + 1) % cards.length;
-    scrollToIndex(cards, idx);
-  }
+  const startAutoScroll = () => {
+    stopAutoScroll();
+    timer = setInterval(scrollCarousel, 4000); // every 4s
+  };
 
-  function start() {
-    stop();
-    if (!mq.matches) return;                 // only on mobile
-    const cards = getCards();
-    if (cards.length < 2) return;
-
-    // set starting index to whatever is most visible right now
-    idx = currentIndex(cards);
-    timer = setInterval(tick, INTERVAL_MS);
-  }
-
-  function stop() {
+  const stopAutoScroll = () => {
     if (timer) clearInterval(timer);
-    timer = null;
-  }
+  };
 
-  function pauseAndMaybeResume() {
-    paused = true;
-    clearTimeout(resumeTO);
-    resumeTO = setTimeout(() => { paused = false; }, RESUME_AFTER);
-  }
+  // Start on load (mobile only)
+  const mq = window.matchMedia('(max-width: 880px)');
+  const checkAndStart = () => {
+    if (mq.matches) startAutoScroll();
+    else stopAutoScroll();
+  };
 
-  // pause/resume on user interactions
-  scroller.addEventListener('pointerdown', () => { userInteracting = true; stop(); });
-  scroller.addEventListener('pointerup',   () => { userInteracting = false; start(); });
-  scroller.addEventListener('pointercancel', () => { userInteracting = false; start(); });
-  scroller.addEventListener('pointerenter', pauseAndMaybeResume);
-  scroller.addEventListener('pointerleave', pauseAndMaybeResume);
-  scroller.addEventListener('wheel', pauseAndMaybeResume, { passive: true });
-  scroller.addEventListener('touchstart', pauseAndMaybeResume, { passive: true });
-  scroller.addEventListener('touchend', pauseAndMaybeResume, { passive: true });
+  checkAndStart();
+  mq.addEventListener ? mq.addEventListener('change', checkAndStart)
+                      : mq.addListener(checkAndStart); // fallback
 
-  // handle tab visibility + viewport changes
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stop(); else start();
-  });
-  mq.addEventListener?.('change', start);
-
-  // boot it
-  window.addEventListener('load', start);
+  // stop when user interacts (so it doesn’t fight you)
+  carousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
+  carousel.addEventListener('pointerdown', stopAutoScroll);
 })();
