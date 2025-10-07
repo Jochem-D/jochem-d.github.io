@@ -139,57 +139,65 @@ document.getElementById('year').textContent = new Date().getFullYear();
   });
 })();
 
-// ------- Lightbox for hero images (click/tap to enlarge) -------
+// ------- Lightbox for hero images (delegated & robust) -------
 (() => {
-  // NOTE: your new structure uses .hero__images, not .hero__pop
-  const cards = document.querySelectorAll('.hero__images .pop');
+  const heroImages = document.querySelector('.hero__images');
   const lb = document.getElementById('lightbox');
-  if (!cards.length || !lb) return;
+  if (!heroImages || !lb) return;
 
   const img = lb.querySelector('.lightbox__img');
   const closeBtn = lb.querySelector('.lightbox__close');
 
+  // ensure .pop items are focusable/accessible
+  heroImages.querySelectorAll('.pop').forEach(p => {
+    if (!p.hasAttribute('tabindex')) p.setAttribute('tabindex', '0');
+    if (!p.hasAttribute('role')) p.setAttribute('role', 'button');
+    if (!p.getAttribute('aria-label')) {
+      const t = p.querySelector('img')?.alt || 'Open image';
+      p.setAttribute('aria-label', t);
+    }
+  });
+
   function open(src, alt) {
+    if (!src) return;
     img.src = src;
     img.alt = alt || '';
     lb.classList.add('open');
     document.body.classList.add('noscroll');
+    // focus close button for accessibility
     closeBtn?.focus?.({ preventScroll: true });
   }
 
   function close() {
     lb.classList.remove('open');
     document.body.classList.remove('noscroll');
-    // clear to free memory on mobile
-    img.removeAttribute('src');
+    img.removeAttribute('src'); // free memory on mobile
   }
 
-  cards.forEach((card) => {
-    card.addEventListener('click', () => {
-      const thumb = card.querySelector('img');
-      const full = card.getAttribute('data-full') || thumb.src;
-      open(full, thumb.alt);
-    });
-    // keyboard support
-    card.setAttribute('tabindex', '0');
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        const thumb = card.querySelector('img');
-        const full = card.getAttribute('data-full') || thumb.src;
-        open(full, thumb.alt);
-      }
-    });
+  // Click/tap anywhere on a .pop (event delegation)
+  heroImages.addEventListener('click', (e) => {
+    const card = e.target.closest('.pop');
+    if (!card || !heroImages.contains(card)) return;
+    const thumb = card.querySelector('img');
+    const full = card.getAttribute('data-full') || thumb?.src;
+    open(full, thumb?.alt);
   });
 
-  // close interactions
+  // Keyboard: Enter/Space on focused .pop
+  heroImages.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('.pop');
+    if (!card) return;
+    e.preventDefault();
+    const thumb = card.querySelector('img');
+    const full = card.getAttribute('data-full') || thumb?.src;
+    open(full, thumb?.alt);
+  });
+
+  // Close interactions
   closeBtn.addEventListener('click', close);
-  lb.addEventListener('click', (e) => {
-    if (e.target === lb) close();
-  });
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lb.classList.contains('open')) close();
-  });
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
 })();
 
 // ------- Preloader: hide once page is ready -------
