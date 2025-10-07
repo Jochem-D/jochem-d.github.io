@@ -57,3 +57,58 @@ i = 0;
 }
 });
 })();
+
+// --- Listening: horizontal playlist shelf controls ---
+(() => {
+  const row = document.getElementById('playlistRow');
+  if (!row) return;
+
+  const buttons = document.querySelectorAll('.scroll-btn');
+
+  function cardStep() {
+    const card = row.querySelector('.playlist-card');
+    return card ? card.getBoundingClientRect().width + 14 /* gap */ : 360;
+  }
+
+  // Button click: scroll by one card
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = cardStep();
+      row.scrollBy({ left: btn.dataset.dir === 'left' ? -step : step, behavior: 'smooth' });
+    });
+  });
+
+  // Arrow keys when row is focused
+  row.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      const dir = e.key === 'ArrowLeft' ? -1 : 1;
+      row.scrollBy({ left: dir * cardStep(), behavior: 'smooth' });
+    }
+  });
+
+  // Make vertical wheel map to horizontal when hovering the row
+  row.addEventListener('wheel', (e) => {
+    const atRow = e.currentTarget.matches(':hover');
+    if (!atRow) return;
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      row.scrollBy({ left: e.deltaY, behavior: 'auto' });
+    }
+  }, { passive: false });
+
+  // Drag-to-scroll (nice on desktop)
+  let isDown = false, startX = 0, startScroll = 0;
+  row.addEventListener('pointerdown', (e) => {
+    isDown = true;
+    startX = e.clientX;
+    startScroll = row.scrollLeft;
+    row.setPointerCapture(e.pointerId);
+  });
+  row.addEventListener('pointermove', (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    row.scrollLeft = startScroll - dx;
+  });
+  row.addEventListener('pointerup', () => { isDown = false; });
+  row.addEventListener('pointercancel', () => { isDown = false; });
+})();

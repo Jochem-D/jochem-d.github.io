@@ -350,3 +350,87 @@ img:not([src]), img[src=""], .carousel img[src="resources/"], .side-gallery img[
 @media (min-width: 621px) {
   .carousel { display: none; }
 }
+
+/* --- Listening: horizontal playlist shelf --- */
+.scroll-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.scroll-btn {
+  border: 1px solid #2b2e46;
+  background: var(--soft);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.scroll-btn:hover { background: #23263a; }
+.scroll-btn:focus-visible { outline: 2px solid #555; }
+
+.playlist-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 6px 2px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-inline: 2px;
+}
+.playlist-row::-webkit-scrollbar { height: 10px; }
+.playlist-row::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.15);
+  border-radius: 999px;
+}
+.playlist-row { scrollbar-color: rgba(255,255,255,.15) transparent; }
+
+.playlist-card {
+  flex: 0 0 clamp(280px, 32vw, 340px); /* responsive width */
+  scroll-snap-align: start;
+  background: var(--panel);
+  border: 1px solid #1e2030;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.playlist-title {
+  padding: .65rem .85rem;
+  font-weight: 600;
+  font-size: .95rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-bottom: 1px solid #1f2234;
+}
+.playlist-card iframe {
+  display: block;
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+@media (max-width: 620px) {
+  .playlist-card { flex-basis: 88vw; }
+  .playlist-card iframe { height: 420px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-btn { scroll-behavior: auto; }
+}
+
+.playlist-row {
+  padding: 6px 0; /* remove horizontal padding */
+  margin-inline: -4px; /* ensures no hidden clipping */
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+/* Hide scrollbar (optional but neat) */
+.playlist-row::-webkit-scrollbar {
+  height: 6px;
+}
+.playlist-row::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 999px;
+}
