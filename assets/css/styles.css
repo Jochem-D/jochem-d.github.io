@@ -14,46 +14,152 @@ body {
   color: #eaf0ff;
 }
 
-/* ----- Starry Background for #about ----- */
+/* ===== Starry, Twinkly, Parallax Background (drop-in for #about) ===== */
+:root {
+  --space-bg-top: #0b0c10;
+  --space-bg-bottom: #050608;
+  --nebula-1: rgba(124, 92, 255, 0.10);
+  --nebula-2: rgba(0, 180, 255, 0.08);
+  --twinkle-speed-fast: 3.8s;
+  --twinkle-speed-slow: 6.5s;
+  --drift-fast: 160s;
+  --drift-slow: 280s;
+}
+
+/* Container */
 #about {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at bottom, #0b0c10 0%, #050608 100%);
   z-index: 0;
+  /* Deep space gradient + faint nebula glow */
+  background:
+    radial-gradient(1200px 700px at 70% 120%, var(--nebula-1), transparent 70%),
+    radial-gradient(900px 600px at 15% -10%, var(--nebula-2), transparent 65%),
+    radial-gradient(ellipse at bottom, var(--space-bg-top) 0%, var(--space-bg-bottom) 100%);
+  isolation: isolate; /* keep blending contained */
 }
 
+/* Shared starfield base for pseudo-layers */
 #about::before,
 #about::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background-repeat: repeat;
-  background-size: 200px 200px;
+  inset: -20%; /* overscan to hide edges during drift */
   z-index: -1;
-  animation: starsMove 120s linear infinite;
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+  background-repeat: repeat;
+  background-blend-mode: screen;
 }
 
+/* Layer A: dense tiny white stars (fast drift, subtle twinkle) */
 #about::before {
-  background-image: radial-gradient(1px 1px at 20px 20px, #fff 50%, transparent 50%);
-  opacity: 0.4;
-  animation-duration: 180s;
+  /* Multiple tiled radial-gradients = star “sprites” without images */
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #ffffff 70%, transparent 72%),
+    radial-gradient(1px 1px at 130px 80px, #ffffff 70%, transparent 72%),
+    radial-gradient(1px 1px at 180px 150px, #ffffff 70%, transparent 72%),
+    radial-gradient(1px 1px at 60px 170px, #ffffff 70%, transparent 72%),
+    radial-gradient(1px 1px at 220px 40px, #ffffff 70%, transparent 72%);
+  background-size: 220px 220px, 260px 260px, 240px 240px, 280px 280px, 300px 300px;
+  opacity: 0.65;
+  animation:
+    star-drift var(--drift-fast) linear infinite,
+    twinkle var(--twinkle-speed-fast) ease-in-out infinite;
 }
 
+/* Layer B: larger tinted stars with slower reverse drift + different twinkle phase */
 #about::after {
-  background-image: radial-gradient(2px 2px at 50px 50px, #7c5cff 40%, transparent 50%);
-  opacity: 0.25;
-  animation: starsMove 240s linear infinite reverse;
+  background-image:
+    radial-gradient(2px 2px at 50px 50px, #9ea7ff 45%, transparent 47%),
+    radial-gradient(2px 2px at 150px 110px, #7c5cff 50%, transparent 52%),
+    radial-gradient(2px 2px at 90px 180px, #b7f0ff 45%, transparent 47%);
+  background-size: 260px 260px, 340px 340px, 300px 300px;
+  opacity: 0.40;
+  animation:
+    star-drift-rev var(--drift-slow) linear infinite,
+    twinkle var(--twinkle-speed-slow) ease-in-out infinite;
+  animation-delay: 0s, 1.2s; /* offset the twinkle phase */
 }
 
-@keyframes starsMove {
-  from {
-    background-position: 0 0;
-  }
+/* Optional vignette for depth (uncomment if you like) */
+/*
+#about::marker, #about::selection { display:none }  // (ignore: keeps some linters quiet)
+#about::before,
+#about::after {
+  mask-image: radial-gradient(110% 90% at 50% 55%, #000 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(110% 90% at 50% 55%, #000 65%, transparent 100%);
+}
+*/
 
-  to {
-    background-position: 1000px 1000px;
+/* ===== Shooting stars (optional): add <span class="shooting-stars"></span> inside #about ===== */
+#about .shooting-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#about .shooting-stars::before,
+#about .shooting-stars::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 2px;
+  top: -10%;
+  left: -20%;
+  opacity: 0;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0) 70%);
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+  transform: rotate(315deg) translate3d(0,0,0);
+  will-change: transform, opacity;
+  animation: shoot 4.8s cubic-bezier(.2,.6,.25,1) infinite;
+}
+
+#about .shooting-stars::after {
+  animation-delay: 2.3s;
+  width: 280px;
+  top: -15%;
+  left: -25%;
+  filter: drop-shadow(0 0 8px rgba(124,92,255,0.9));
+}
+
+/* ===== Keyframes ===== */
+@keyframes star-drift {
+  from { transform: translate3d(0,0,0) }
+  to   { transform: translate3d(12%, 12%, 0) }
+}
+
+@keyframes star-drift-rev {
+  from { transform: translate3d(0,0,0) }
+  to   { transform: translate3d(-8%, -10%, 0) }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; filter: brightness(1) }
+  50%      { opacity: 0.75; filter: brightness(1.35) }
+}
+
+/* Shooting star streak across the view with fade in/out */
+@keyframes shoot {
+  0%   { transform: rotate(315deg) translate3d(0,0,0); opacity: 0 }
+  6%   { opacity: 1 }
+  60%  { transform: rotate(315deg) translate3d(140vmax, 140vmax, 0); opacity: 0.9 }
+  100% { opacity: 0 }
+}
+
+/* Respect user's motion settings */
+@media (prefers-reduced-motion: reduce) {
+  #about::before,
+  #about::after,
+  #about .shooting-stars::before,
+  #about .shooting-stars::after {
+    animation: none !important;
   }
 }
+
 
 /* ----- Theme tokens ----- */
 :root {

@@ -264,3 +264,4 @@ document.getElementById('year').textContent = new Date().getFullYear();
   carousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
   carousel.addEventListener('pointerdown', stopAutoScroll);
 })();
+
