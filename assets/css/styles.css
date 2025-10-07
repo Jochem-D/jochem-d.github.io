@@ -1,4 +1,4 @@
-/* ----- Base / Reset ----- */
+/* ----- Base ----- */
 * {
   box-sizing: border-box;
 }
@@ -14,7 +14,7 @@ body {
   color: #eaf0ff;
 }
 
-/* ===== Starry, Twinkly, Parallax Background (drop-in for #about) ===== */
+/* Starry */
 :root {
   --space-bg-top: #0b0c10;
   --space-bg-bottom: #050608;
@@ -36,7 +36,7 @@ body {
     radial-gradient(1200px 700px at 70% 120%, var(--nebula-1), transparent 70%),
     radial-gradient(900px 600px at 15% -10%, var(--nebula-2), transparent 65%),
     radial-gradient(ellipse at bottom, var(--space-bg-top) 0%, var(--space-bg-bottom) 100%);
-  isolation: isolate; /* keep blending contained */
+  isolation: isolate; 
 }
 
 /* Shared starfield base for pseudo-layers */
@@ -44,7 +44,7 @@ body {
 #about::after {
   content: "";
   position: absolute;
-  inset: -20%; /* overscan to hide edges during drift */
+  inset: -20%; 
   z-index: -1;
   pointer-events: none;
   will-change: transform, opacity, filter;
@@ -82,50 +82,6 @@ body {
   animation-delay: 0s, 1.2s; /* offset the twinkle phase */
 }
 
-/* Optional vignette for depth (uncomment if you like) */
-/*
-#about::marker, #about::selection { display:none }  // (ignore: keeps some linters quiet)
-#about::before,
-#about::after {
-  mask-image: radial-gradient(110% 90% at 50% 55%, #000 65%, transparent 100%);
-  -webkit-mask-image: radial-gradient(110% 90% at 50% 55%, #000 65%, transparent 100%);
-}
-*/
-
-/* ===== Shooting stars (optional): add <span class="shooting-stars"></span> inside #about ===== */
-#about .shooting-stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
-}
-
-#about .shooting-stars::before,
-#about .shooting-stars::after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 2px;
-  top: -10%;
-  left: -20%;
-  opacity: 0;
-  background:
-    linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0) 70%);
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
-  transform: rotate(315deg) translate3d(0,0,0);
-  will-change: transform, opacity;
-  animation: shoot 4.8s cubic-bezier(.2,.6,.25,1) infinite;
-}
-
-#about .shooting-stars::after {
-  animation-delay: 2.3s;
-  width: 280px;
-  top: -15%;
-  left: -25%;
-  filter: drop-shadow(0 0 8px rgba(124,92,255,0.9));
-}
-
 /* ===== Keyframes ===== */
 @keyframes star-drift {
   from { transform: translate3d(0,0,0) }
@@ -140,14 +96,6 @@ body {
 @keyframes twinkle {
   0%, 100% { opacity: 0.35; filter: brightness(1) }
   50%      { opacity: 0.75; filter: brightness(1.35) }
-}
-
-/* Shooting star streak across the view with fade in/out */
-@keyframes shoot {
-  0%   { transform: rotate(315deg) translate3d(0,0,0); opacity: 0 }
-  6%   { opacity: 1 }
-  60%  { transform: rotate(315deg) translate3d(140vmax, 140vmax, 0); opacity: 0.9 }
-  100% { opacity: 0 }
 }
 
 /* Respect user's motion settings */
