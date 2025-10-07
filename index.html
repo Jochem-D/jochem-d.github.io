@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-
 <body>
   <!-- Sticky Nav -->
   <header class="nav">
@@ -29,17 +27,46 @@
       </button>
     </div>
   </header>
+
   <main>
+    <!-- Loading overlay -->
+    <div id="preloader" aria-hidden="true">
+      <div class="preloader__inner">
+        <div class="preloader__logo">JD</div>
+        <div class="preloader__bar"><span></span></div>
+        <div class="preloader__hint">loading…</div>
+      </div>
+    </div>
+
     <!-- Hero / Home -->
-    <section id="home" class="section hero">
+    <section id="home" class="section hero hero--fx">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__particles" aria-hidden="true"></div>
+
+      <!-- Side images (outside container) -->
+      <div class="hero__images">
+  <div class="hero__side hero__side--left">
+    <figure class="pop"><img src="resources/Teamfoto.jpg" alt="Photo 1"></figure>
+    <figure class="pop"><img src="resources/Cat1.jpg" alt="Photo 2" class="portrait"></figure>
+    <figure class="pop"><img src="resources/Platenspeler.jpg" alt="Photo 3"></figure>
+  </div>
+  <div class="hero__side hero__side--right">
+    <figure class="pop"><img src="resources/me.webp" alt="Photo 4"></figure>
+    <figure class="pop"><img src="resources/cat2.jpeg" alt="Photo 5" class="portrait"></figure>
+    <figure class="pop"><img src="resources/pc.jpg" alt="Photo 6"></figure>
+  </div>
+</div>
+
+
+      <!-- Text content -->
       <div class="container hero__content">
         <h1>
           Hey, I’m <span class="gradient">Jochem</span> — an HBO-ICT student
-          from HZ who's in his fourth year.
+          from HZ.
         </h1>
         <p class="muted">
-          I like to watch anime and read manga. I also love music and building
-          with LEGO. Scroll down to see what I enjoy doing.
+          I like to watch anime and read a lot; manga, books you name it. I also love listening to music and building
+          with LEGO. Scroll down to see more of what I enjoy doing.
         </p>
         <div class="btnrow">
           <a class="btn" href="#projects">See Projects</a>
@@ -47,26 +74,10 @@
         </div>
       </div>
 
-      <!-- Side images (desktop) -->
-      <div class="side-gallery side-gallery--left">
-        <img src="resources/shot-1.jpg" alt />
-        <img src="resources/Teamfotocut.jpg" alt />
-        <img src="resources/shot-3.jpg" alt />
-      </div>
-      <div class="side-gallery side-gallery--right">
-        <img src="resources/" alt />
-        <img src="resources/" alt />
-        <img src="resources/vogelbekdiersite.jpeg" alt />
-      </div>
-
-      <!-- Mobile carousel -->
-      <div class="carousel" aria-label="photo strip">
-        <img src="resources/" alt />
-        <img src="resources/" alt />
-        <img src="resources/" alt />
-        <img src="resources/" alt />
-        <img src="resources/" alt />
-        <img src="resources/" alt />
+      <!-- Lightbox (single) -->
+      <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox__close" aria-label="Close image">×</button>
+        <img class="lightbox__img" alt="">
       </div>
     </section>
 
@@ -97,112 +108,94 @@
               <strong>Anime:</strong>
               City The Animation, One Piece, Dr. Stone, and Konosuba.
               <br />
-              <a href="https://kitsu.app/users/Jokemu" target="_blank" rel="noreferrer"
-                class="fav-link">View full list on Kitsu</a>
-            
+              <a href="https://kitsu.app/users/Jokemu" target="_blank" rel="noreferrer" class="fav-link">View full list on Kitsu</a>
             </li>
-            <li>
-              <strong>Games:</strong>
-              Minecraft, most indie games, and VR games too.
-            </li>
-            <li>
-              <strong>LEGO:</strong>
-              Nintendo, movie references — all that stuff really.
-            </li>
+            <li><strong>Games:</strong> Minecraft, most indie games, and VR games too.</li>
+            <li><strong>LEGO:</strong> Nintendo, movie references — all that stuff really.</li>
           </ul>
         </div>
       </div>
     </section>
 
-   <!-- Projects -->
-<section id="projects" class="section section--projects">
-  <div class="container">
-    <div class="section__header">
-      <h2>Projects</h2>
-      <a class="btn btn--ghost" href="https://github.com/jochem-d" target="_blank" rel="noreferrer">View GitHub</a>
-    </div>
+    <!-- Projects -->
+    <section id="projects" class="section section--projects">
+      <div class="container">
+        <div class="section__header">
+          <h2>Projects</h2>
+          <a class="btn btn--ghost" href="https://github.com/jochem-d" target="_blank" rel="noreferrer">View GitHub</a>
+        </div>
 
-    <div class="cards cards--projects">
-      <!-- D&D Manager -->
-      <article class="card project">
-        <div class="project__media">
-          <img src="resources/projects/ddsheet.png" alt="CLI + web sheet preview for D&D 5e Manager" />
-        </div>
-        <div class="project__body">
-          <h3 class="project__title">DD sheet creator (D&D 5e Manager)</h3>
-          <p class="muted">
-            Go-based CLI that generates a static character sheet. Commands for inventory, spells, equipment, and more.
-          </p>
-          <div class="tags">
-            <span class="tag">Go</span><span class="tag">CLI</span><span class="tag">Web</span>
-          </div>
-          <div class="project__links">
-          </div>
-        </div>
-      </article>
+        <div class="cards cards--projects">
+          <article class="card project">
+            <div class="project__media">
+              <img src="resources/Placeholder.png" alt="CLI + web sheet preview for D&D 5e Manager" />
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">DD sheet creator (D&D 5e Manager)</h3>
+              <p class="muted">Go-based CLI that generates a static character sheet. Commands for inventory, spells, equipment, and more.</p>
+              <div class="tags"><span class="tag">Go</span><span class="tag">CLI</span><span class="tag">Web</span></div>
+              <div class="project__links"></div>
+            </div>
+          </article>
 
-      <!-- Portfolio Site -->
-      <article class="card project">
-        <div class="project__media">
-          <img src="resources/projects/portfolio.png" alt="Screenshot of this portfolio site" />
-        </div>
-        <div class="project__body">
-          <h3 class="project__title">Portfolio Site</h3>
-          <p class="muted">
-            Constantly refactoring this site for cleaner UX, better performance, and playful aesthetics (retro & neon vibes).
-          </p>
-          <div class="tags">
-            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Javascript</span>
-          </div>
-          <div class="project__links">
-            <a class="btn" href="https://github.com/Jochem-D/jochem-d.github.io" target="_blank" rel="noreferrer">Repo</a>
-            <a class="btn btn--secondary" href="/" rel="noreferrer">View site</a>
-          </div>
-        </div>
-      </article>
+          <article class="card project">
+            <div class="project__media">
+              <img src="resources/OldSite.png" alt="Screenshot of this portfolio site" />
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Portfolio Site</h3>
+              <p class="muted">Constantly refactoring this site because I am never pleased with myself.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Javascript</span></div>
+              <div class="project__links">
+                <a class="btn" href="https://github.com/Jochem-D/jochem-d.github.io" target="_blank" rel="noreferrer">Repo</a>
+                <a class="btn btn--secondary" href="/" rel="noreferrer">View site</a>
+              </div>
+            </div>
+          </article>
 
-      <!-- Unreal Engine Dashboard -->
-      <article class="card project">
-        <div class="project__media">
-          <img src="resources/projects/unreal-dashboard.jpg" alt="Unreal Engine realtime building dashboard" />
-        </div>
-        <div class="project__body">
-          <h3 class="project__title">Unreal Engine Dashboard</h3>
-          <p class="muted">
-            Interactive realtime overview for JRCZ sensors: environment data, visualized in UE with Blueprints.
-          </p>
-          <div class="tags">
-            <span class="tag">Unreal</span><span class="tag">Blueprints</span>
-          </div>
-          <div class="project__links">
-          </div>
-        </div>
-      </article>
+          <article class="card project">
+            <div class="project__media">
+              <img src="resources/DigitalTwin.png" alt="Unreal Engine realtime building dashboard" />
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Unreal Engine Dashboard</h3>
+              <p class="muted">Interactive realtime overview for JRCZ sensors: environment data, visualized in UE with Blueprints.</p>
+              <div class="tags"><span class="tag">Unreal</span><span class="tag">Blueprints</span></div>
+              <div class="project__links"></div>
+            </div>
+          </article>
 
-      <!-- Unreal Engine Game -->
-      <article class="card project">
-        <div class="project__media">
-          <img src="resources/projects/unreal-game.jpg" alt="Unreal Engine game screenshot" />
-        </div>
-        <div class="project__body">
-          <h3 class="project__title">Unreal Engine Game</h3>
-          <p class="muted">
-            Just a fun side project to see if I could develop a game in unreal engine. Still a work in progress.
-          </p>
-          <div class="tags">
-            <span class="tag">Unreal</span><span class="tag">Blueprints</span>
-          </div>
-          <div class="project__links">
-            <a class="btn btn--secondary" href="#" aria-disabled="true">Private / Demo by request</a>
-          </div>
-        </div>
-      </article>
+          <article class="card project">
+            <div class="project__media">
+              <img src="resources/Placeholder.png" alt="Unreal Engine game screenshot" />
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Unreal Engine Game</h3>
+              <p class="muted">Just a fun side project to see if I could develop a game in unreal engine. Still a work in progress.</p>
+              <div class="tags"><span class="tag">Unreal</span><span class="tag">Blueprints</span></div>
+              <div class="project__links">
+                <a class="btn btn--secondary" href="#" aria-disabled="true">Private / Demo by request</a>
+              </div>
+            </div>
+          </article>
 
-      <!-- Add more projects by duplicating <article class="card project">…</article> -->
-    </div>
-  </div>
-</section>
-
+          <article class="card project">
+            <div class="project__media">
+              <img src="resources/SamSuong.png" alt="Sam Suong" />
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Game 2nd year</h3>
+              <p class="muted">A project I made with a team of fellow students to let children learn the dangers of the world wide web.</p>
+              <div class="tags"><span class="tag">Typescript</span><span class="tag">Game Engine</span></div>
+               <div class="project__links">
+                <a class="btn" href="https://github.com/ThijsDeR/Brogrammer-Game" target="_blank" rel="noreferrer">Repo</a>
+                <a class="btn btn--secondary" href="https://thijsder.github.io/Brogrammer-Game" target="_blank" rel="noreferrer">Play game</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- Listening -->
     <section id="listening" class="section">
@@ -210,103 +203,74 @@
         <div class="section__header">
           <h2>What I’m Listening To</h2>
           <div class="scroll-controls" aria-label="Playlist carousel controls">
-            <button class="scroll-btn" data-dir="left" aria-label="Scroll left">
-              ⟵
-            </button>
-            <button class="scroll-btn" data-dir="right" aria-label="Scroll right">
-              ⟶
-            </button>
+            <button class="scroll-btn" data-dir="left" aria-label="Scroll left">⟵</button>
+            <button class="scroll-btn" data-dir="right" aria-label="Scroll right">⟶</button>
           </div>
         </div>
 
-        <!-- Horizontal scroll row -->
         <div class="playlist-row" id="playlistRow" tabindex="0" aria-label="Spotify playlists">
-          <!-- Card 1 -->
           <article class="playlist-card">
             <header class="playlist-title">70s–90s Mix</header>
-            <iframe title="Spotify: 70s–90s Mix"
-              src="https://open.spotify.com/embed/playlist/7FbR7JLc2rb2e6b5iuDYYn?utm_source=generator"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-            </iframe>
+            <iframe title="Spotify: 70s–90s Mix" src="https://open.spotify.com/embed/playlist/7FbR7JLc2rb2e6b5iuDYYn?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </article>
 
-          <!-- Card 2  -->
           <article class="playlist-card">
             <header class="playlist-title">J-Pop</header>
-            <iframe title="Spotify: J-pop"
-              src="https://open.spotify.com/embed/playlist/4runZgbc0t81P1al0ig8jQ?utm_source=generator"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-            </iframe>
+            <iframe title="Spotify: J-pop" src="https://open.spotify.com/embed/playlist/4runZgbc0t81P1al0ig8jQ?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </article>
 
-          <!-- Card 3  -->
           <article class="playlist-card">
             <header class="playlist-title">Random</header>
-            <iframe title="Spotify: Random"
-              src="https://open.spotify.com/embed/playlist/27NFDMjxq1QvM1igIOX3HX?utm_source=generator"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-            </iframe>
+            <iframe title="Spotify: Random" src="https://open.spotify.com/embed/playlist/27NFDMjxq1QvM1igIOX3HX?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </article>
 
-          <!-- Card 4 -->
           <article class="playlist-card">
-            <header class="playlist-title">
-              Recommendation from friends
-            </header>
-            <iframe title="Spotify: recommendation"
-              src="https://open.spotify.com/embed/playlist/23iKgjUNXcq1r0UkZ5ZYwa?utm_source=generator"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-            </iframe>
+            <header class="playlist-title">Recommendation from friends</header>
+            <iframe title="Spotify: recommendation" src="https://open.spotify.com/embed/playlist/23iKgjUNXcq1r0UkZ5ZYwa?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </article>
         </div>
 
         <details class="details">
-          <summary>
-            As you can see it's mostly music from the 70s to the 90s, but I
-            also listen to a lot more!
-          </summary>
-          <p>
-            <code>J-pop, K-pop, Jazz, Rock, Pop</code> — and whatever my
-            friends send me!
-          </p>
+          <summary>As you can see it's mostly music from the 70s to the 90s, but I also listen to a lot more!</summary>
+          <p><code>J-pop, K-pop, Jazz, Rock, Pop</code> — and whatever my friends send me!</p>
         </details>
       </div>
     </section>
 
-<!-- Fun / Goals -->
-<section id="extra" class="section section--feature">
-  <div class="container">
-    <div class="section__header">
-      <h2>Goals & Fun</h2>
-      <span class="tag">What’s next</span>
-    </div>
+    <!-- Fun / Goals -->
+    <section id="extra" class="section section--feature">
+      <div class="container">
+        <div class="section__header">
+          <h2>Goals & Fun</h2>
+          <span class="tag">What’s next</span>
+        </div>
 
-    <div class="grid-2 grid-2--roomy">
-      <div class="card card--tall">
-        <h3>Goals I want to achieve</h3>
-        <p class="muted">Bigger ambitions I’m actively working toward:</p>
-        <ul class="list list--pretty list--columns">
-          <li>Make a game in Unreal Engine and ship it.</li>
-          <li>Build a ray tracing engine. just for fun</li>
-          <li>Fill my whole house with LEGO sets.</li>
-          <li>Learning how to use Blender</li>
-          <!-- add as many as you like -->
-        </ul>
-      </div>
+        <div class="grid-2 grid-2--roomy">
+          <div class="card card--tall">
+            <h3>Goals I want to achieve</h3>
+            <ul class="list list--pretty list--columns">
+              <li>Make a game in Unreal Engine and ship it.</li>
+              <li>Build a ray tracing engine. just for fun</li>
+              <li>Fill my whole house with LEGO sets.</li>
+              <li>Learning how to use Blender (not a blender)</li>
+            </ul>
+          </div>
 
-      <div class="card card--tall">
-        <h3>Just for Fun</h3>
-        <p class="muted">Ongoing hobbies + experiments:</p>
-        <ul class="list list--pretty list--columns">
-          <li>I’m learning the guitar.</li>
-          <li>Collecting vinyl records.</li>
-          <li>Seeing if I can still code without ChatGPT.</li>
-          <!-- add more freely -->
-        </ul>
+          <div class="card card--tall">
+            <h3>Just for Fun</h3>
+            <p class="muted">Ongoing hobbies + experiments:</p>
+            <ul class="list list--pretty list--columns">
+              <li>I’m learning the guitar.</li>
+              <li>Collecting vinyl records.</li>
+              <li>Seeing if I can still code without AI.</li>
+              <li>3D printing small models.</li>
+              <li>Learning Japanese</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="container footer__inner">
@@ -321,5 +285,4 @@
 
   <script defer src="assets/js/main.js"></script>
 </body>
-
 </html>
