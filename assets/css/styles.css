@@ -87,15 +87,6 @@ body {
   grid-template-columns: 1fr;
   gap: 16px;
 }
-.card--link {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.15s ease, border-color 0.15s ease;
-}
-.card--link:hover {
-  transform: translateY(-2px);
-  border-color: #2a2d44;
-}
 .list {
   margin: 0;
   padding-left: 0;
@@ -124,17 +115,6 @@ body {
   display: grid;
   gap: 20px;
   grid-template-columns: 1.2fr 0.8fr;
-}
-.embed {
-  margin-top: 18px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-.embed iframe {
-  width: 100%;
-  height: 352px;
-  border: 0;
 }
 .details {
   margin-top: 16px;
@@ -435,17 +415,6 @@ img:not([src]), img[src=""], .carousel img[src="resources/"], .side-gallery img[
   border-radius: 999px;
 }
 
-.fav-link {
-  color: var(--brand2);
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.fav-link:hover {
-  color: var(--brand);
-  text-decoration: underline;
-}
-
 
 /* --- Feature styling for #extra --- */
 .section--feature {
@@ -553,4 +522,12 @@ img:not([src]), img[src=""], .carousel img[src="resources/"], .side-gallery img[
   }
   .project__media img { max-height: 240px; }
 }
+
+.fav-link {
+  color: var(--brand2);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.fav-link:hover { color: var(--brand); text-decoration: underline; }
 
