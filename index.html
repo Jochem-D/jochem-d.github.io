@@ -142,26 +142,72 @@
       </section>
 
       <!-- Listening -->
-      <section id="listening" class="section">
-        <div class="container">
-          <h2>What I’m Listening To</h2>
+<section id="listening" class="section">
+  <div class="container">
+    <div class="section__header">
+      <h2>What I’m Listening To</h2>
+      <div class="scroll-controls" aria-label="Playlist carousel controls">
+        <button class="scroll-btn" data-dir="left" aria-label="Scroll left">⟵</button>
+        <button class="scroll-btn" data-dir="right" aria-label="Scroll right">⟶</button>
+      </div>
+    </div>
 
-          <div class="embed">
-            <iframe
-              title="Spotify"
-              src="https://open.spotify.com/embed/playlist/7FbR7JLc2rb2e6b5iuDYYn?utm_source=generator"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              style="height: 500px; width: 100%; border: none; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
-            </iframe>
+    <!-- Horizontal scroll row -->
+    <div class="playlist-row" id="playlistRow" tabindex="0" aria-label="Spotify playlists">
 
-            <details class="details">
-              <summary>As you can see its mostly music from the 70s to the 90s
-                but i also listen to a lot more!</summary>
-              <p> <code>J-pop, K-op, Jazz, Rock, Pop and whatever I gt sent by my friends!
-            </details>
-          </div>
-        </section>
+      <!-- Card 1 -->
+      <article class="playlist-card">
+        <header class="playlist-title">70s–90s Mix</header>
+        <iframe
+          title="Spotify: 70s–90s Mix"
+          src="https://open.spotify.com/embed/playlist/7FbR7JLc2rb2e6b5iuDYYn?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </article>
+
+      <!-- Card 2  -->
+      <article class="playlist-card">
+        <header class="playlist-title">J-Pop</header>
+        <iframe
+          title="Spotify: J-pop"
+          src="https://open.spotify.com/embed/playlist/4runZgbc0t81P1al0ig8jQ?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </article>
+
+      <!-- Card 3  -->
+      <article class="playlist-card">
+        <header class="playlist-title">Random</header>
+        <iframe
+          title="Spotify: Random"
+          src="https://open.spotify.com/embed/playlist/27NFDMjxq1QvM1igIOX3HX?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="playlist-card">
+        <header class="playlist-title">Recommendation from friends</header>
+        <iframe
+          title="Spotify: recommendation"
+          src="https://open.spotify.com/embed/playlist/23iKgjUNXcq1r0UkZ5ZYwa?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </article>    
+
+    </div>
+
+    <details class="details">
+      <summary>As you can see it's mostly music from the 70s to the 90s, but I also listen to a lot more!</summary>
+      <p><code>J-pop, K-pop, Jazz, Rock, Pop</code> — and whatever my friends send me!</p>
+    </details>
+  </div>
+</section>
+
 
         <!-- Fun / Goals -->
         <section id="extra" class="section">
